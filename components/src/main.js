@@ -1,6 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+// global components is not recommended
+// import Greeting from "@/components/Greeting.vue"
 
-import './assets/main.css'
+let vm = createApp(App)
 
-createApp(App).mount('#app')
+// vm.component("Greeting", Greeting)
+
+vm.mount('#app')

@@ -1,47 +1,45 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <!-- static text -->
+  <!-- <p>Hey!</p> -->
+  <h3>Hey!</h3>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+  <!-- update the age when button is clicked -->
+  <!-- update of data in parent component is reflected and overwrites changes in child component-->
+  <!-- <button type="button" @click="age++">Update Age</button> -->
 
-  <main>
-    <TheWelcome />
-  </main>
+  <!-- greeting component -->
+  <greeting :age="age"></greeting>
+
+  <!-- user component -->
+  <!-- listening to a event -->
+  <user :age="age" @age-change="updateAge"></user>
+
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+import Greeting from "@/components/Greeting.vue"
+import User from "./components/User.vue"
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+export default{
+  name: 'App',
+  components: {
+    // register a component locally - Greeting component is registered under App component
+    // Greeting: Greeting
+    Greeting,
+    User
+  },
+  // passing data to a component
+  data(){
+    return {
+      age: 20
+    }
+  },
+  methods: {
+    updateAge(num){
+      this.age += num
+    }
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+  
 }
-</style>
+</script>
