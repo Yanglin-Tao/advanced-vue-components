@@ -12,7 +12,7 @@
 
   <!-- user component -->
   <!-- listening to a event -->
-  <user :age="age" @age-change="updateAge"></user>
+  <user :age="age" @age-change="updateAge" :ageChangeFn="updateAgeCB"></user>
 
 </template>
 
@@ -36,6 +36,9 @@ export default{
   },
   methods: {
     updateAge(num){
+      this.age += num
+    },
+    updateAgeCB(num){
       this.age += num
     }
   }

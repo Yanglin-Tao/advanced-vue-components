@@ -3,7 +3,10 @@
     <!-- <button type="button" @click="age++">Update Age</button> -->
 
     <!-- emitting events allow to update data in child component-->
-    <button type="button" @click="onClickAge">Update Age</button>
+    <button type="button" @click="onClickAge">Update Age (emitting events)</button>
+
+    <!-- use callback functions -->
+    <button type="button" @click="ageChangeFn(3)">Update Age (callback function)</button>
 
     <p>The user is {{ age }} years old</p>
 
@@ -31,12 +34,13 @@ export default {
             // default: 20
 
             // function to validate data
-            validator(){
-                // no access to the functiom
+            validator(value){
+                // no access to the function
                 // this.onClickAge()
                 return value < 130
             }
-        }
+        },
+        ageChangeFn: Function
     },
     // recommends to record what the component does
     emits: ['age-change'],
